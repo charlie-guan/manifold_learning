@@ -16,7 +16,7 @@ X, Y = MnistLoader.load_mnist(n_samples=5000)
 
 
 # VISUALISATION
-def plot_low_dimensional_embedding(X_low, name="", time=0, error=0):
+def plot_embedding(X_low, name="", time=0, error=0):
     '''
         Plots the low dimensional embedding given by the matrix X_low (n_samples, n_features).
 
@@ -47,20 +47,20 @@ num_neighbors = 5
 num_components = 3
 # PCA
 X_pca, tpca = PCA.fit_transform(X, components=num_components)
-plot_low_dimensional_embedding(X_pca, "PCA", tpca)
+plot_embedding(X_pca, "PCA", tpca)
 
 plt.savefig("mnist_pca_5nbr.png")
 # LLE
 X_lle, tlle, err_lle = LLE.fit_transform(X, n_neighbors=num_neighbors, components=num_components)
-plot_low_dimensional_embedding(X_lle, "LLE", tlle, err_lle)
+plot_embedding(X_lle, "LLE", tlle, err_lle)
 plt.savefig("mnist_lle_5nbr.png")
 # Isomap
 X_isomap, tisomap, err_isomap = Isomap.fit_transform(X, n_neighbors=num_neighbors, components=num_components)
-plot_low_dimensional_embedding(X_isomap, "Isomap", tisomap, err_isomap)
+plot_embedding(X_isomap, "Isomap", tisomap, err_isomap)
 plt.savefig("mnist_isomap_5nbr.png")
 # Laplacian Eigenmaps
 X_laplacian, tlaplacian = Laplacian_Eigenmaps.fit_transform(X, n_neighbors=num_neighbors, components=num_components)
-plot_low_dimensional_embedding(X_laplacian, "Laplacian Eigenmaps", tlaplacian)
+plot_embedding(X_laplacian, "Laplacian Eigenmaps", tlaplacian)
 plt.savefig("mnist_diffusion_5nbr.png")
 
 

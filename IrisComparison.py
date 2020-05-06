@@ -12,7 +12,7 @@ from matplotlib.ticker import NullFormatter
 X, Y = IrisLoader.load_iris()
 
 # VISUALISATION
-def plot_low_dimensional_embedding(X_low, name="", time=0, error=0):
+def plot_embedding(X_low, name="", time=0, error=0):
     '''
         Plots the low dimensional embedding given by the matrix X_low (n_samples, n_features).
 
@@ -35,21 +35,21 @@ def plot_low_dimensional_embedding(X_low, name="", time=0, error=0):
 num_neighbors = 50
 # PCA
 X_pca, tpca = PCA.fit_transform(X)
-plot_low_dimensional_embedding(X_pca, "PCA", tpca)
+plot_embedding(X_pca, "PCA", tpca)
 plt.savefig("iris_pca.png")
 # LLE
 X_lle, tlle, err_lle = LLE.fit_transform(X, n_neighbors=20)
-plot_low_dimensional_embedding(X_lle, "LLE", tlle, err_lle)
+plot_embedding(X_lle, "LLE", tlle, err_lle)
 plt.savefig("iris_lle.png")
 
 # Isomap
 X_isomap, tisomap, err_isomap = Isomap.fit_transform(X, n_neighbors=50)
-plot_low_dimensional_embedding(X_isomap, "Isomap", tisomap, err_isomap)
+plot_embedding(X_isomap, "Isomap", tisomap, err_isomap)
 plt.savefig("iris_isomap.png")
 
 # Laplacian Eigenmaps
 X_laplacian, tlaplacian = Laplacian_Eigenmaps.fit_transform(X, n_neighbors=10)
-plot_low_dimensional_embedding(X_laplacian, "Laplacian Eigenmaps", tlaplacian)
+plot_embedding(X_laplacian, "Laplacian Eigenmaps", tlaplacian)
 plt.savefig("iris_diffusion.png")
 
 

@@ -23,7 +23,7 @@ def plot_original_swissroll():
     ax.set_title("Original Swiss Roll dataset")
 
 # VISUALISATION
-def plot_low_dimensional_embedding(X_low, name="", time=0, error=0):
+def plot_embedding(X_low, name="", time=0, error=0):
     '''
         Plots the low dimensional embedding given by the matrix X_low (n_samples, n_features).
 
@@ -45,19 +45,19 @@ def plot_low_dimensional_embedding(X_low, name="", time=0, error=0):
 
 # PCA
 X_pca, tpca = PCA.fit_transform(X)
-plot_low_dimensional_embedding(X_pca, "PCA", tpca)
+plot_embedding(X_pca, "PCA", tpca)
 plt.savefig("swiss_pca.png")
 # LLE
 X_lle, tlle, err_lle = LLE.fit_transform(X, n_neighbors=100)
-plot_low_dimensional_embedding(X_lle, "LLE", tlle, err_lle)
+plot_embedding(X_lle, "LLE", tlle, err_lle)
 plt.savefig("swiss_lle_100neighbors.png")
 # Isomap
 X_isomap, tisomap, err_isomap = Isomap.fit_transform(X, n_neighbors=100)
-plot_low_dimensional_embedding(X_isomap, "Isomap", tisomap, err_isomap)
+plot_embedding(X_isomap, "Isomap", tisomap, err_isomap)
 plt.savefig("swiss_isomap_100neighbors.png")
 # Laplacian Eigenmaps
 X_laplacian, tlaplacian = Laplacian_Eigenmaps.fit_transform(X, n_neighbors=100)
-plot_low_dimensional_embedding(X_laplacian, "Laplacian Eigenmaps", tlaplacian)
+plot_embedding(X_laplacian, "Laplacian Eigenmaps", tlaplacian)
 plt.savefig("swiss_diffusion_100neighbors.png")
 
 plot_original_swissroll()
